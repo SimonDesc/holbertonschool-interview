@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 
 def canUnlockAll(boxes):
+    """
+    The function `canUnlockAll` checks if all the boxes in the given list can
+    be unlocked by finding the corresponding keys in other boxes.
+    :param boxes: The parameter "boxes" is a list of lists. Each inner list
+    represents a box, and contains integers that represent the keys inside
+    that box. The index of each inner list represents the box number
+    :return: a boolean value indicating whether all the boxes can be unlocked
+    or not.
+    """
 
     keys = set([0])  # on a toujours la clé 0 au début
     box_open = set()
