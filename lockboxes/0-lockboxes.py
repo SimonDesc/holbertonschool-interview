@@ -3,6 +3,7 @@
 Ce script permet de résoudre le challenge lockboxes
 """
 
+
 def canUnlockAll(boxes):
     """
     The function `canUnlockAll` checks if all the boxes in the given list can
