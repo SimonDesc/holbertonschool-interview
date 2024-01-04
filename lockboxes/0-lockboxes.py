@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+Ce script permet de résoudre le challenge lockboxes
+"""
 
 def canUnlockAll(boxes):
     """
