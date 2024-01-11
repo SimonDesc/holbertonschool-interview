@@ -14,10 +14,6 @@ listint_t *insert_node(listint_t **head, int number)
 {
 	listint_t *new;
     listint_t *current;
-	listint_t *tmp;
-	int found = 0;
-
-	current = *head;
 
     new = malloc(sizeof(listint_t));
     if (new == NULL)
@@ -26,33 +22,24 @@ listint_t *insert_node(listint_t **head, int number)
     new->n = number;
     new->next = NULL;
 
-    if (*head == NULL)
-        *head = new;
-	else
+	// On check si la liste est vide ou si le premier élément est le plus petit
+    if (*head == NULL || (*head)->n >= number)
 	{
-		while (current->next != NULL) {
-			if (number < current->n) {
-				new->next = current;
-				found = 1;
-				*head = new;
-				break;
-			}
-
-			if (current->next->n > number) {
-				tmp = current->next;
-				tmp->next = current->next->next;
-				new->next = tmp;
-				current->next = new;
-				found = 1;
-				break;
-			}
-			current = current->next;
-		}
-		if (found == 0) {
-			current->next = new;
-		}
-		
+		new->next = *head;
+		*head = new;
+		return new;
 	}
+
+	current = *head;
+	// On recherche la position de la node qu'on récupère dans current
+	while (current->next != NULL && current->next->n < number)
+	{
+		current = current->next;
+	}
+
+	// On prend la place de current
+	new->next = current->next;
+	current->next = new;
 
 	return (new);
 }
