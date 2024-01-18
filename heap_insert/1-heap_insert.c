@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 /**
- * insert_at_first_open_position inserts a new node at the first available
+ * insert_at_first_open_position - inserts a new node at the first available
  * position in a binary heap.
  *
  * @current: A pointer to the current node in the heap where the new
