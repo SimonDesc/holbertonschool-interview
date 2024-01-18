@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void insert_at_first_open_position(heap_t *current, heap_t *new_node, int level, int *done)
+static void insert_at_first_open_position(heap_t *current, heap_t *new_node,
+										  int level, int *done)
 {
 	if (current == NULL || *done)
 	{
@@ -46,7 +47,7 @@ static int tree_height(heap_t *root)
 {
 	if (root == NULL)
 	{
-		return 0;
+		return (0);
 	}
 
 	int left_height = tree_height(root->left);
@@ -54,12 +55,41 @@ static int tree_height(heap_t *root)
 
 	if (left_height > right_height)
 	{
-		return left_height + 1;
+		return (left_height + 1);
 	}
 	else
 	{
-		return right_height + 1;
+		return (right_height + 1);
 	}
+}
+
+heap_t *sift_up(heap_t *new_node)
+{
+	heap_t *current = new_node;
+	heap_t *node_with_inserted_value = new_node;
+
+	while (current->parent)
+	{
+		heap_t *parent = current->parent;
+
+		if (parent->n < current->n)
+		{
+			int temp = parent->n;
+
+			parent->n = current->n;
+			current->n = temp;
+
+			node_with_inserted_value = parent;
+
+			current = parent;
+		}
+		else
+		{
+			break;
+		}
+	}
+
+	return (node_with_inserted_value);
 }
 
 heap_t *heap_insert(heap_t **root, int value)
@@ -67,15 +97,10 @@ heap_t *heap_insert(heap_t **root, int value)
 	heap_t *new;
 
 	if (!root)
-	{
-		return NULL;
-	}
-
+		return (NULL);
 	new = malloc(sizeof(heap_t));
 	if (new == NULL)
-	{
-		return NULL;
-	}
+		return (NULL);
 
 	new->n = value;
 	new->left = NULL;
@@ -93,44 +118,20 @@ heap_t *heap_insert(heap_t **root, int value)
 		int done = 0;
 		/* On calcul la hauteur de l'arbre */
 		int height = tree_height(*root);
+
 		for (int level = 1; level <= height; ++level)
 		{
-			/*  */
 			insert_at_first_open_position(*root, new, level, &done);
 			if (done)
 			{
 				break;
 			}
 		}
-		/* Si le nœud n'a pas été inséré, l'insérer au niveau suivant.*/
 		if (!done)
 		{
 			insert_at_first_open_position(*root, new, height + 1, &done);
 		}
 	}
 
-	heap_t *current = new;
-	heap_t *node_with_inserted_value = new;
-
-	while (current->parent)
-	{
-		heap_t *parent = current->parent;
-		if (parent->n < current->n)
-		{
-
-			int temp = parent->n;
-			parent->n = current->n;
-			current->n = temp;
-
-			node_with_inserted_value = parent;
-
-			current = parent;
-		}
-		else
-		{
-			break;
-		}
-	}
-
-	return node_with_inserted_value;
+	return (sift_up(new));
 }
