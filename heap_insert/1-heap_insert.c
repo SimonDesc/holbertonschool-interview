@@ -1,5 +1,6 @@
 #include "binary_trees.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 static void insert_at_first_open_position(heap_t *current, heap_t *new_node, int level, int *done)
 {
@@ -108,28 +109,28 @@ heap_t *heap_insert(heap_t **root, int value)
 		}
 	}
 
-	/* Réorganisation du tas (heapify up). */
 	heap_t *current = new;
+	heap_t *node_with_inserted_value = new;
+
 	while (current->parent)
 	{
 		heap_t *parent = current->parent;
-		/* Si le nœud courant est plus grand que son parent, échanger leurs valeurs. */
 		if (parent->n < current->n)
 		{
+
 			int temp = parent->n;
 			parent->n = current->n;
 			current->n = temp;
 
-			/* Continuer à remonter dans l'arbre.*/
+			node_with_inserted_value = parent;
+
 			current = parent;
 		}
 		else
 		{
-			/* Si le parent est plus grand, le tas est valide.*/
 			break;
 		}
 	}
 
-	/* Retourner le nouveau nœud inséré.*/
-	return new;
+	return node_with_inserted_value;
 }
