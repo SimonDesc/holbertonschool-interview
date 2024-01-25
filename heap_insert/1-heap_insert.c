@@ -168,6 +168,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		int done = 0;
 		/* On calcul la hauteur de l'arbre */
 		int height = tree_height(*root);
+		printf("height : %d\n", height);
 
 		for (int level = 1; level <= height; ++level)
 		{
