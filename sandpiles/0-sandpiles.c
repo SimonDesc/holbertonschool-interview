@@ -70,6 +70,8 @@ void toppling(int grid1[3][3])
 {
 	int i, j;
 
+	int gridTemp[3][3] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+
 	for (i = 0; i < 3; i++)
 	{
 		for (j = 0; j < 3; j++)
@@ -80,23 +82,24 @@ void toppling(int grid1[3][3])
 
 				if (i - 1 >= 0)
 				{
-					grid1[i - 1][j]++;
+					gridTemp[i - 1][j]++;
 				}
 				if (j - 1 >= 0)
 				{
-					grid1[i][j - 1]++;
+					gridTemp[i][j - 1]++;
 				}
 				if (j + 1 < 3)
 				{
-					grid1[i][j + 1]++;
+					gridTemp[i][j + 1]++;
 				}
 				if (i + 1 < 3)
 				{
-					grid1[i + 1][j]++;
+					gridTemp[i + 1][j]++;
 				}
 			}
 		}
 	}
+	add_matrix(grid1, gridTemp);
 }
 
 /**
