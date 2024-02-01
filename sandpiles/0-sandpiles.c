@@ -37,9 +37,9 @@ void print_grid2(int grid[3][3])
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
+	int i, j;
+
 	add_matrix(grid1, grid2);
-	int i = 0;
-	int j = 0;
 
 	for (i = 0; i < 3; i++)
 	{
@@ -68,8 +68,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
  */
 void toppling(int grid1[3][3])
 {
-	int i = 0;
-	int j = 0;
+	int i, j;
 
 	for (i = 0; i < 3; i++)
 	{
@@ -112,8 +111,7 @@ void toppling(int grid1[3][3])
  */
 void add_matrix(int grid1[3][3], int grid2[3][3])
 {
-	int i = 0;
-	int j = 0;
+	int i, j;
 
 	for (i = 0; i < 3; i++)
 	{
