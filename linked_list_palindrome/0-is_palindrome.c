@@ -12,10 +12,10 @@ int is_palindrome(listint_t **head)
 	const listint_t *current;
 	unsigned int n;
 	int i, j = 0;
-
+	int number_of_node = print_listint(*head) - 1;
 	current = *head;
 	n = 0;
-	int number_of_node = print_listint(*head) - 1;
+
 	int list_1[number_of_node];
 	int list_2[number_of_node];
 
