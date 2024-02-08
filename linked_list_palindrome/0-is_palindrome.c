@@ -13,6 +13,7 @@ int is_palindrome(listint_t **head)
 	unsigned int n = 0;
 	int i, j = 0;
 	int number_of_node = print_listint(*head) - 1;
+
 	int list_1[number_of_node];
 	int list_2[number_of_node];
 
