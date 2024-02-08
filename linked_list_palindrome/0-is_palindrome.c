@@ -1,41 +1,53 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
+
 /**
- * is_palindrome - Check if it's a palindrome
- * @head: pointer to head of list
- * Return: 0 if palindrome, else 1
+ * is_palindrome - checks if a singly linked list is a palindrome
+ * @head: pointer to the pointer of the head of the list
+ *
+ * Desciption: Time complexity O(n), space complexity O(1)
+ * Return: 0 if it is not a palindrome, 1 if it is a palindrome
  */
 int is_palindrome(listint_t **head)
 {
-	const listint_t *current = *head;
-	unsigned int n = 0;
-	int i, j = 0;
-	int number_of_node = print_listint(*head) - 1;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev, *temp;
 
-	int list_1[number_of_node];
-	int list_2[number_of_node];
-
-	while (current != NULL)
+	if (*head == NULL)
+		return (1);
+	/**
+	 * Find the middle of the list with "slow" by
+	 * Floyd's Cycle Detection Algorithm
+	 */
+	while (slow && fast->next && fast->next->next)
 	{
-		list_1[n] = current->n;
-		current = current->next;
-		n++;
+		slow = slow->next;
+		fast = fast->next->next;
 	}
-
-	for (i = number_of_node; i >= 0; i--, j++)
+	/*Set up for reversing*/
+	prev = slow;
+	slow = slow->next;
+	prev->next = NULL;
+	/*Reversing the second half of the list*/
+	while (slow)
 	{
-		list_2[j] = list_1[i];
+		temp = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = temp;
 	}
+	/*Moving fast and slow to extremities of the list*/
+	fast = *head;
+	slow = prev;
 
-	for (i = 0; i < number_of_node; i++)
+	/*Check if its a palindrome*/
+	while (slow && fast)
 	{
-		if (list_1[i] != list_2[i])
-		{
+		if (slow->n != fast->n)
 			return (0);
-		}
+		slow = slow->next;
+		fast = fast->next;
 	}
-
 	return (1);
 }
