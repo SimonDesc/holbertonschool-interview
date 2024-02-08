@@ -15,11 +15,9 @@ int is_palindrome(listint_t **head)
 	int number_of_node = print_listint(*head) - 1;
 	current = *head;
 	n = 0;
-
 	int *list_1 = malloc(number_of_node * sizeof(int));
 	if (list_1 == NULL)
 		return (1);
-	
 	int *list_2 = malloc(number_of_node * sizeof(int));
 	if (list_2 == NULL)
 		return (1);
@@ -45,7 +43,7 @@ int is_palindrome(listint_t **head)
 			return (0);
 		}
 	}
-	
+
 	free(list_1);
 	free(list_2);
 	return (1);
