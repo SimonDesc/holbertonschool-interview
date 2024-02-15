@@ -33,19 +33,17 @@ for line in sys.stdin:
     """ loop throught the file """
     line_count += 1
     input_to_array = line.split()
-    if len(input_to_array) != 9:
-        pass
-    else:
-        try:
-            file_size += int(input_to_array[-1])
-        except ValueError:
-            pass
 
-        try:
-            status_code = int(input_to_array[-2])
-            if status_code in dict_status_code:
-                dict_status_code[status_code] += 1
-        except:
+    try:
+        file_size += int(input_to_array[-1])
+    except ValueError:
+        pass
+
+    try:
+        status_code = int(input_to_array[-2])
+        if status_code in dict_status_code:
+            dict_status_code[status_code] += 1
+    except:
             pass
 
     if line_count % 10 == 0:
