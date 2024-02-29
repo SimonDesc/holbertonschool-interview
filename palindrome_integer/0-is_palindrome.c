@@ -13,7 +13,7 @@ int is_palindrome(unsigned long n)
 	int reversed = 0, remainder, original;
 	original = n;
 
-	// reversed integer is stored in reversed variable
+	/* reversed integer is stored in reversed variable */
 	while (n != 0)
 	{
 		remainder = n % 10;
@@ -21,7 +21,7 @@ int is_palindrome(unsigned long n)
 		n /= 10;
 	}
 
-	// palindrome if orignal and reversed are equal
+	/* palindrome if orignal and reversed are equal */
 	if (original == reversed)
 		return (1);
 	else
