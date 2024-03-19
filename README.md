@@ -51,3 +51,10 @@ Devise a method to determine if a given integer is a palindrome, testing your sk
 ---
 
 Dive into each project directory for in-depth details, setup guides, and a deep dive into the challenges and solutions. Happy coding! 🎉💻
+
+
+## Contributors ✨
+
+- **Simon Descombes**
+  - LinkedIn: [Simon](https://www.linkedin.com/in/simon-descombes/)
+  - GitHub: [SimonDesc](https://github.com/SimonDesc)
