@@ -1,5 +1,7 @@
 # Holberton School Interview Main Projects Overview 🚀📚
 
+![image](https://media.geeksforgeeks.org/wp-content/uploads/20211015174229/SoftwareEngineeringInterviewQuestionsAnswers.png)
+
 ## Introduction 🌟
 
 A comprehensive collection of interview preparation challenges developed at Holberton School, each designed to test and enhance the understanding of algorithms and data structures.
