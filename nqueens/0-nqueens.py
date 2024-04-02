@@ -51,7 +51,6 @@ def main():
     input_validation()
     n = int(sys.argv[1])
     solutions = solve_n_queens(n)
-    print(f"Found {len(solutions)} solutions for {n} Queens:")
     print_solutions(solutions)
 
 
