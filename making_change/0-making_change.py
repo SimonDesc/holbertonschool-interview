@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-def makeChange(coins, total):
-    """
+"""
     The `makeChange` function uses dynamic programming to find the minimum number of coins needed to
     make a given total amount using a given set of coin denominations.
-    
+
     :param coins: Coins is a list of coin denominations available for making change. Each element in the
     list represents the value of a coin that can be used. For example, if coins = [1, 2, 5], it means
     you have coins of denominations 1, 2, and
@@ -14,6 +13,10 @@ def makeChange(coins, total):
     the given `total` amount using the provided `coins`. If it is not possible to make the total amount
     with the given coins, the function returns -1.
     """
+
+
+def makeChange(coins, total):
+
     if total <= 0:
         return 0
 
