@@ -3,8 +3,10 @@
 Generates Pascal's triangle up to n rows.
 """
 
-
 def pascal_triangle(numRows):
+    """
+    Generates Pascal's triangle up to n rows.
+    """
     result = []
     if numRows == 0:
         return result
