@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""
-Generates Pascal's triangle up to n rows.
-"""
+""" Module for Pascal's triangle """
+
 
 def pascal_triangle(numRows):
-    """
-    Generates Pascal's triangle up to n rows.
-    """
+    """ Returns list of lists of ints representing Pascal triangle of n """
+
     result = []
     if numRows == 0:
         return result
