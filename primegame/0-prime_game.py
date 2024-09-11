@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""
+'''
 This module contains the solution for the Prime Game problem.
-"""
+'''
 
 def isWinner(x, nums):
-    """
+    '''
     Determine the winner of multiple rounds of the Prime Game.
 
     Args:
@@ -14,7 +14,7 @@ def isWinner(x, nums):
     Returns:
         str or None: The name of the player who won the most rounds
                      ("Maria" or "Ben"), or None if it's a tie.
-    """
+    '''
     def sieve_of_eratosthenes(n):
         primes = [True] * (n + 1)
         primes[0] = primes[1] = False
