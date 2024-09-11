@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def isWinner(x, nums):
     def sieve_of_eratosthenes(n):
         primes = [True] * (n + 1)
