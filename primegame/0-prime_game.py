@@ -1,49 +1,57 @@
 #!/usr/bin/python3
+"""Module defining isWinner function."""
 
-''' Prime Game '''
+
+def isWinner(x, nums):
+    """Function to get who has won in prime game"""
+    mariaWinsCount = 0
+    benWinsCount = 0
+
+    for num in nums:
+        roundsSet = list(range(1, num + 1))
+        primesSet = primes_in_range(1, num)
+
+        if not primesSet:
+            benWinsCount += 1
+            continue
+
+        isMariaTurns = True
+
+        while (True):
+            if not primesSet:
+                if isMariaTurns:
+                    benWinsCount += 1
+                else:
+                    mariaWinsCount += 1
+                break
+
+            smallestPrime = primesSet.pop(0)
+            roundsSet.remove(smallestPrime)
+
+            roundsSet = [x for x in roundsSet if x % smallestPrime != 0]
+
+            isMariaTurns = not isMariaTurns
+
+    if mariaWinsCount > benWinsCount:
+        return "Winner: Maria"
+
+    if mariaWinsCount < benWinsCount:
+        return "Winner: Ben"
+
+    return None
 
 
-def check_prime(n):
-    ''' Check if n is a prime number '''
+def is_prime(n):
+    """Returns True if n is prime, else False."""
+    if n < 2:
+        return False
     for i in range(2, int(n ** 0.5) + 1):
-        if not n % i:
+        if n % i == 0:
             return False
     return True
 
 
-def add_prime(n, primes):
-    ''' Add prime to list '''
-    last_prime = primes[-1]
-    if n > last_prime:
-        for i in range(last_prime + 1, n + 1):
-            if check_prime(i):
-                primes.append(i)
-            else:
-                primes.append(0)
-
-
-def isWinner(x, nums):
-    ''' x is the number of rounds and nums is an array of n
-    Return: name of the player that won the most rounds
-    If the winner cannot be determined, return None '''
-
-    score = {"Maria": 0, "Ben": 0}
-    primes = [0, 0, 2]
-    add_prime(max(nums), primes)
-
-    for round in range(x):
-        _sum = sum((i != 0 and i <= nums[round])
-                   for i in primes[:nums[round] + 1])
-        if (_sum % 2):
-            winner = "Maria"
-        else:
-            winner = "Ben"
-        if winner:
-            score[winner] += 1
-
-    if score["Maria"] > score["Ben"]:
-        return "Maria"
-    elif score["Ben"] > score["Maria"]:
-        return "Ben"
-
-    return None
+def primes_in_range(start, end):
+    """Returns a list of prime numbers between start and end (inclusive)."""
+    primes = [n for n in range(start, end+1) if is_prime(n)]
+    return primes
