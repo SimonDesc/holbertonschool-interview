@@ -1,28 +1,19 @@
 #!/usr/bin/python3
 """
 This module contains the solution for the Prime Game problem.
-
-The Prime Game is played by two players, Maria and Ben, who take turns choosing
-prime numbers from a set of consecutive integers starting from 1 up to n.
-The chosen prime number and its multiples are removed from the set.
-The player who cannot make a move loses the game.
-
-The main function in this module is isWinner, which determines the winner
-of multiple rounds of the Prime Game.
 """
-
 
 def isWinner(x, nums):
     """
     Determine the winner of multiple rounds of the Prime Game.
 
     Args:
-    x (int): The number of rounds to play.
-    nums (list of int): A list of n values for each round.
+        x (int): The number of rounds to play.
+        nums (list of int): A list of n values for each round.
 
     Returns:
-    str or None: The name of the player who won the most rounds
-                 ("Maria" or "Ben"), or None if it's a tie.
+        str or None: The name of the player who won the most rounds
+                     ("Maria" or "Ben"), or None if it's a tie.
     """
     def sieve_of_eratosthenes(n):
         primes = [True] * (n + 1)
